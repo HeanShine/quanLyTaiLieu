@@ -1,6 +1,11 @@
 package ImplementInterface;
 
+import model.Book;
 import model.Document;
+import model.Magazine;
+import model.News;
+
+import java.util.List;
 
 public interface InterfaceDocument {
     public boolean isDocument(Integer idCheck);
@@ -9,7 +14,11 @@ public interface InterfaceDocument {
 
     public void removeDocument(Integer idRemove);
 
-    public Document searchDocumentByType();
+    public List<Magazine> filterMagazines();
+
+    public List<Book> filterBook();
+
+    public List<News> filterNews();
 
     void showDocument();
 }

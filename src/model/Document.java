@@ -41,18 +41,29 @@ public class Document {
     public void InputDocument() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter name document: ");
+        System.out.println("Nhập tên tài liệu : ");
         this.nameDocument = scanner.nextLine();
-        System.out.println("Enter number release: ");
-        this.numberRelease = scanner.nextInt();
-    }
+
+        do {
+           try {
+                System.out.println("Số bản phát hành : ");
+                this.numberRelease = Integer.parseInt(scanner.nextLine());
+                if (this.numberRelease <= 0) {
+                     System.out.println("\n" + "Số phát hành phải lớn hơn 0 !");
+                }
+              } catch (NumberFormatException e) {
+                System.out.println("Phát hành số phải là một số !");
+           }
+        } while (this.numberRelease <= 0);
+        }
+
 
     @Override
     public String toString() {
-        return "Document{" +
-                "idDocument=" + idDocument +
-                ", nameDocument='" + nameDocument + '\'' +
-                ", numberRelease=" + numberRelease +
+        return "Tài liệu : {" +  '\'' +
+                " Mã Tài liệu = " + idDocument + '\'' +
+                ", Tên tài liệu = " + nameDocument + '\'' +
+                ", Số lượng phát hành = " + numberRelease + '\'' +
                 '}';
     }
 }

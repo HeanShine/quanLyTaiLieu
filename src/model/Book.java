@@ -19,31 +19,48 @@ public class Book extends Document {
     public String getAuthor() {
         return author;
     }
+
     public int getNumberPage() {
         return numberPage;
     }
+
     public void setAuthor(String author) {
         this.author = author;
     }
+
     public void setNumberPage(int numberPage) {
         this.numberPage = numberPage;
     }
+
     public void InputBook() {
         Scanner scanner = new Scanner(System.in);
         super.InputDocument();
-        System.out.println("Enter author: ");
+
+        System.out.println("Nhập tên tác giả : ");
         this.author = scanner.nextLine();
-        System.out.println("Enter number page: ");
-        this.numberPage = scanner.nextInt();
+
+        do {
+            try {
+                System.out.println("Nhập số trang : ");
+                this.numberPage = Integer.parseInt(scanner.nextLine());
+                if (this.numberPage <= 0) {
+                    System.out.println("\n" + "Số trang phải lớn hơn 0 !");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Số trang phải là một số !");
+            }
+        } while (this.numberPage <= 0);
+
     }
+
     @Override
     public String toString() {
-        return "Book{" +
-                "idDocument=" + getIdDocument() +
-                ", nameDocument='" + getNameDocument() + '\'' +
-                ", numberRelease=" + getNumberRelease() +
-                "author='" + author + '\'' +
-                ", numberPage=" + numberPage +
+        return " Sách {" +
+                "Mã sách = " + getIdDocument() + '\'' +
+                ", Tên sách = '" + getNameDocument() + '\'' +
+                ", Số lượng phát hành = " + getNumberRelease() + '\'' +
+                "Tên tác giả ='" + author + '\'' +
+                ", Số trang =" + numberPage + '\'' +
                 '}';
     }
 }
